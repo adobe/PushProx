@@ -10,5 +10,5 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/src/app/client/client .
 ENV PULL_URL http://localhost:4502/metrics
-ENV PORXY_URL http://contaner.proxy
-CMD ["./client", "--proxy-url=$PROXY_URL", "--pull-url=$PULL_URL"]
+ENV PROXY_URL http://contaner.proxy
+CMD exec ./client --proxy-url=$PROXY_URL --pull-url=$PULL_URL
